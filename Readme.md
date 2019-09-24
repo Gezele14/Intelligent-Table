@@ -1,0 +1,1 @@
+# Table status of a restaurant
