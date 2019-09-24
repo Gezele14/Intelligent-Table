@@ -1,30 +1,27 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-import { MoonText } from '../components/StyledText';
 
 const SensorData = props => (
   <View style={styles.sensor}>
     <Image
-      style={{width: 110, height: 110}}
+      style={{width: 110, height: 110,marginRight: 20}}
       source={{uri: props.mediaImage}}
     />
     <View style={styles.column}>
-      <Text style={{fontSize : 24, fontWeight:'bold'}}><MoonText>{props.name}</MoonText></Text>
-      <Text style={{fontSize : 22}}>{props.value ? ("Nivel: " + props.value) + "%" : <MoonText>"Sin conexión con el broker"</MoonText>}</Text>
-      <Text style={{fontSize : 22}}>{props.value && <MoonText>"Ultima vez actualizado"</MoonText>}</Text>
-      <Text style={{fontSize : 22}}>{props.value && <MoonText>"2/9/2019 2:30AM"</MoonText>}</Text>
-      
+      <Text style={styles.textTitleStyle}>{props.name}</Text>
+      <Text style={styles.textStyle}>{props.value ? ("Estado: " + props.value) : "Sin conexión con el broker"}</Text>
     </View>
   </View>
 );
 
 let styles = StyleSheet.create({
   sensor : {
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    padding : 10,
+    borderRadius: 2,
+    borderWidth: 2,
+    borderColor: '#000',
+    marginTop: -2,
+    padding : 4,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection : 'row'
@@ -32,7 +29,17 @@ let styles = StyleSheet.create({
   column : {
     flexDirection : 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginRight: 5
+  },
+  textTitleStyle:{
+    fontFamily: 'Comic',
+    fontSize : 20
+  },
+  textStyle:{
+    fontFamily: 'Berlin',
+    fontSize : 20,
+    marginTop: 5
   }
 });
 

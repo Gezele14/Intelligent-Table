@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, AsyncStorage } from "react-native";
 import init from 'react_native_mqtt';
 
 import SensorData from "../components/SensorData";
-import { MoonText } from '../components/StyledText';
+import { ScrollView } from "react-native-gesture-handler";
 
 init({
   size: 10000,
@@ -36,6 +36,20 @@ export default class SensorMain extends React.Component {
     this.state = {
       client,
       table : null,
+    }
+  };
+
+  static navigationOptions = {
+    title: 'Detalles de las mesas',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#493D26',
+      textAlign: 'center',
+    },
+    headerTitleStyle:{
+      fontWeight: 'normal',
+      fontFamily: 'Moonbright',
+      fontSize: 38,
     }
   };
 
@@ -77,31 +91,47 @@ export default class SensorMain extends React.Component {
 
   render() {
     return (
-      <View style={styles.mainWindow}>
+      <ScrollView style={styles.mainWindow}>
         <View>
           {this.renderSensorData(
             "Mesa 1",
             this.state.table,
             "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
           )}
+          {this.renderSensorData(
+            "Mesa 2",
+            this.state.table,
+            "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
+          )}
+          {this.renderSensorData(
+            "Mesa 3",
+            this.state.table,
+            "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
+          )}
+          {this.renderSensorData(
+            "Mesa 4",
+            this.state.table,
+            "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
+          )}
+          {this.renderSensorData(
+            "Mesa 5",
+            this.state.table,
+            "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
+          )}
+
          
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
 
-SensorMain.navigationOptions = {
-  title: 'Disponibilidad de las mesas',
-  font: '../assets/fonts/Moonbright.ttf'
-};
 
 let styles = StyleSheet.create({
   mainWindow : {
     flex : 1,
-    justifyContent : 'center',
     flexDirection : 'column',
-    alignItems : 'center',
+    backgroundColor: '#F0E9CE',
     fontSize : 20
   }
 });

@@ -14,6 +14,16 @@ const HomeStack = createStackNavigator(
   {
     Inicio: SensorMain,
   },
+  {
+    defaultNavigationOptions: {
+        backgroundColor: '#F0E9CE',
+      
+      headerTitleStyle:{
+        fontWeight: 'normal',
+        
+      }
+    }
+  },
   config
 );
 

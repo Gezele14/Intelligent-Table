@@ -34,7 +34,9 @@ async function loadResourcesAsync() {
     ]),
     Font.loadAsync({
       ...Ionicons.font,
+      'Berlin': require('./src/assets/fonts/Berlin.ttf'),
       'Moonbright': require('./src/assets/fonts/Moonbright.ttf'),
+      'Comic': require('./src/assets/fonts/Comic.ttf')
     }),
   ]);
 }
