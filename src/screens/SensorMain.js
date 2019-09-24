@@ -19,14 +19,14 @@ export default class SensorMain extends React.Component {
   constructor(props) {
     super(props);
 
-    const client = new Paho.MQTT.Client('soldier.cloudmqtt.com', 36331, 'webSocket');
+    const client = new Paho.MQTT.Client('soldier.cloudmqtt.com', 32885, 'webSocket');
     client.onConnectionLost = this.onConnectionLost;
     client.onMessageArrived = this.decodeMessage;
 
     let options = {
       useSSL : true,
-      userName : "fpwzfqeg",
-      password : "5ynwWEtuwmvs",
+      userName : "bnjrpvae",
+      password : "xQTE9il9FMYl",
       onSuccess : this.onConnect,
       onFailure : this.doFail
     }
@@ -56,6 +56,7 @@ export default class SensorMain extends React.Component {
   onConnect = () => {
     const { client } = this.state;
     console.log("Connected");
+    client.subscribe('Mesa1/estado');
   };
   
   doFail = () => {
@@ -70,12 +71,15 @@ export default class SensorMain extends React.Component {
 
   decodeMessage = message => {
     let direction = message._getDestinationName();
+    console.log(direction);
     let value = message._getPayloadString().split(',');
-    let minVal;
-    let maxVal;
-    console.log(value);
+    
     switch(direction) {
-      //Aqui van los case para la mesa
+      case 'Mesa1/estado':
+        this.setState({
+          table : value,
+        });
+        break;
     }
   }
 
@@ -118,8 +122,6 @@ export default class SensorMain extends React.Component {
             this.state.table,
             "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
           )}
-
-         
         </View>
       </ScrollView>
     );
