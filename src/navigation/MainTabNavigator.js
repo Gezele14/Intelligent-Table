@@ -4,6 +4,8 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import SensorMain from '../screens/SensorMain';
+import GridMain from '../screens/GridMain';
+
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -12,7 +14,8 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
-    Inicio: SensorMain,
+    Menu: GridMain,
+    Inicio: SensorMain
   },
   {
     defaultNavigationOptions: {
@@ -28,7 +31,7 @@ const HomeStack = createStackNavigator(
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Inicio',
+  tabBarLabel: 'Menu',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
