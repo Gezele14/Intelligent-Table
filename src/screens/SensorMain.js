@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, AsyncStorage } from "react-native";
+import { 
+  Modal,
+  View,
+  Button,
+  TouchableHighlight,
+  Text, 
+  StyleSheet, 
+  AsyncStorage } from "react-native";
 import init from 'react_native_mqtt';
 
 import SensorData from "../components/SensorData";
@@ -31,12 +38,15 @@ export default class SensorMain extends React.Component {
       onFailure : this.doFail
     }
     
+    let visible = false
+
     client.connect(options);
 
     this.state = {
       client,
-      table : null,
+      table : 'black',
     }
+
   };
 
   static navigationOptions = {
@@ -50,7 +60,19 @@ export default class SensorMain extends React.Component {
       fontWeight: 'normal',
       fontFamily: 'Moonbright',
       fontSize: 38,
-    }
+    },
+    headerRight: (
+        <Button
+          style={{marginRight: 5}}
+          onPress={() => alert('Colors mean: \n'+ 
+                              '   *Black: no connection\n'+
+                              '   *Red: Table Bussy.\n'+
+                              '   *Yellow: Table in mainteinance.\n'+
+                              '   *Green: Table is free.')}
+          title="Info"
+          color="#493D26"
+        />
+    )
   };
 
   onConnect = () => {
@@ -71,7 +93,6 @@ export default class SensorMain extends React.Component {
 
   decodeMessage = message => {
     let direction = message._getDestinationName();
-    console.log(direction);
     let value = message._getPayloadString().split(',');
     
     switch(direction) {
@@ -97,6 +118,7 @@ export default class SensorMain extends React.Component {
     return (
       <ScrollView style={styles.mainWindow}>
         <View>
+
           {this.renderSensorData(
             "Table 1",
             this.state.table,
@@ -104,22 +126,22 @@ export default class SensorMain extends React.Component {
           )}
           {this.renderSensorData(
             "Table 2",
-            this.state.table,
+            'red',
             "https://cdn.iconscout.com/icon/premium/png-512-thumb/restaurant-table-8-817653.png" //URL de la imagen
           )}
           {this.renderSensorData(
             "Table 3",
-            this.state.table,
+            'green',
             "https://cdn.iconscout.com/icon/premium/png-512-thumb/restaurant-table-8-817653.png" //URL de la imagen
           )}
           {this.renderSensorData(
             "Table 4",
-            this.state.table,
+            'red',
             "https://cdn.iconscout.com/icon/premium/png-512-thumb/restaurant-table-8-817653.png" //URL de la imagen
           )}
           {this.renderSensorData(
             "Table 5",
-            this.state.table,
+            'yellow',
             "https://cdn.iconscout.com/icon/premium/png-512-thumb/restaurant-table-8-817653.png" //URL de la imagen
           )}
         </View>
@@ -135,5 +157,12 @@ let styles = StyleSheet.create({
     flexDirection : 'column',
     backgroundColor: '#F0E9CE',
     fontSize : 20
+  },
+  ImageIconStyle: {
+    padding: 10,
+    margin: 5,
+    height: 25,
+    width: 25,
+    resizeMode: 'stretch',
   }
 });

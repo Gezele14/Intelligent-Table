@@ -8,6 +8,8 @@ int contconecxion =  0;
 const char *ssid = "Gerardoz";
 const char *pass = "gera1234";
 
+unsigned long prevmillis = 0;
+
 char SERVER[50] = "soldier.cloudmqtt.com";
 int SERVERPORT = 12885;
 String USERNAME = "Mesa1";
@@ -107,8 +109,14 @@ void loop(){
   }
   client.loop();
 
-  client.publish(ESTADO, valueEstado);
-  
+  unsigned long currentmillis = millis();
+
+  if (currentmillis-prevmillis >= 1000){
+      prevmillis = currentmillis;
+      client.publish(ESTADO, valueEstado);
+  }
+
+
   led_estado = estado.lectura(VALOR);
   val = digitalRead(btn);
   if ((val == HIGH) && (old_val == LOW)){
@@ -120,14 +128,14 @@ void loop(){
     digitalWrite(mantenimiento,HIGH);
     digitalWrite(disponible,LOW);
     digitalWrite(ocupada,LOW);
-    strtemp = "Limpiando";
+    strtemp = "yellow";
     strtemp.toCharArray(valueEstado, 20);
   }
   else if(led_estado == 1){
     digitalWrite(mantenimiento,LOW);
     digitalWrite(disponible,HIGH);
     digitalWrite(ocupada,LOW);
-    strtemp = "Disponible";
+    strtemp = "green";
     strtemp.toCharArray(valueEstado, 20);
     
   }
@@ -135,7 +143,7 @@ void loop(){
     digitalWrite(mantenimiento,LOW);
     digitalWrite(disponible,LOW);
     digitalWrite(ocupada,HIGH);
-    strtemp = "Ocupada";
+    strtemp = "red";
     strtemp.toCharArray(valueEstado, 20);
   }
   delay(100);

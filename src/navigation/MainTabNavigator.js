@@ -46,10 +46,4 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-});
-
-tabNavigator.path = '';
-
-export default tabNavigator;
+export default HomeStack;

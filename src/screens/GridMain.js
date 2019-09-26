@@ -30,28 +30,14 @@ export default class GridMain extends React.Component {
     render(){
         return(
             <View style={styles.container}>
-                 <Text style={{
-                    fontFamily:'Moonbright',
-                    color: '#493D26',
-                    flex: 1,
-                    fontSize: 50,
-                    textAlign: 'center',
-                    padding: 30,
-                }}>
-                    Welcome               This is Smart-Table
-                </Text>
+                 <Text style={styles.text}> Welcome This is Smart-Table </Text>
                 <FlatList
-                numColumns={2}
-                data={[
-                    require('../assets/images/tableIcon.png'),
-                ]}
-                renderItem={({item}) => {
-                   return <ListItem image={item} navigation={this.props.navigation} />
-                }}
-                keyExtractor={
-                    (index)=> {return index}
-                }
-                />
+                    numColumns={2}
+                    data={[require('../assets/images/tableIcon.png')]}
+                    renderItem={({item}) => {
+                        return <ListItem image={item} navigation={this.props.navigation} /> }}
+
+                    keyExtractor={(index)=> {return index}} />
             </View> 
         );
     }
@@ -66,6 +52,14 @@ const styles = StyleSheet.create({
         alignItems:'center',
         backgroundColor: '#F0E9CE',
     },
+    text: {
+        fontFamily:'Moonbright',
+        color: '#493D26',
+        flex: 1,
+        fontSize: 50,
+        textAlign: 'center',
+        padding: 30
+    }
 });
 
 

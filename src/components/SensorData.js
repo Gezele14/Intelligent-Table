@@ -1,45 +1,67 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-
+let stateValue
 const SensorData = props => (
-  <View style={styles.sensor}>
+  <View style={styles.container}>
     <Image
-      style={{width: 110, height: 110,marginRight: 20}}
+      style={style = styles.imageStyle}
       source={{uri: props.mediaImage}}
     />
-    <View style={styles.column}>
+    <View>
       <Text style={styles.textTitleStyle}>{props.name}</Text>
-      <Text style={styles.textStyle}>{props.value ? ("State: " + props.value) : "No connection with broker"}</Text>
+
+      <View style={styles.column}>
+        <Text style={styles.textStyle}>{"State:"}</Text>
+        <View style={
+          {
+            width: 25,
+            height: 25,
+            borderRadius: 25 / 2,
+            lineHeight: 20,
+            borderColor: '#000',
+            marginTop: 10,
+            backgroundColor: props.value
+          }
+        }></View>
+
+      </View>
     </View>
   </View>
 );
 
+
 let styles = StyleSheet.create({
-  sensor : {
+  container : {
     borderRadius: 2,
     borderWidth: 2,
     borderColor: '#000',
-    marginTop: -2,
     padding : 4,
-    justifyContent: 'center',
-    alignItems: 'center',
     flexDirection : 'row'
   },
   column : {
     flexDirection : 'column',
+    alignItems: "center",
     justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 5
+    marginLeft: 40,
+    marginTop: 10
   },
   textTitleStyle:{
     fontFamily: 'Comic',
-    fontSize : 20
+    marginLeft: 40,
+    fontSize : 20,
+    marginTop: 10
   },
   textStyle:{
     fontFamily: 'Berlin',
+    justifyContent: 'center',
     fontSize : 20,
-    marginTop: 5
+  },
+  imageStyle: {
+    width: 100, 
+    height: 100,
+    marginRight: 20,
+    marginLeft: 40
   }
 });
 
