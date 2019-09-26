@@ -5,7 +5,7 @@ let stateValue
 const SensorData = props => (
   <View style={styles.container}>
     <Image
-      style={style = styles.imageStyle}
+      style={styles.imageStyle}
       source={{uri: props.mediaImage}}
     />
     <View>
@@ -30,7 +30,6 @@ const SensorData = props => (
   </View>
 );
 
-
 let styles = StyleSheet.create({
   container : {
     borderRadius: 2,
@@ -47,6 +46,7 @@ let styles = StyleSheet.create({
     marginTop: 10
   },
   textTitleStyle:{
+    paddingLeft: 50,
     fontFamily: 'Comic',
     marginLeft: 40,
     fontSize : 20,
