@@ -40,7 +40,7 @@ export default class SensorMain extends React.Component {
   };
 
   static navigationOptions = {
-    title: 'Detalles de las mesas',
+    title: 'Smart Tables',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#493D26',
@@ -98,29 +98,29 @@ export default class SensorMain extends React.Component {
       <ScrollView style={styles.mainWindow}>
         <View>
           {this.renderSensorData(
-            "Mesa 1",
+            "Table 1",
             this.state.table,
-            "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
+            "https://cdn.iconscout.com/icon/premium/png-512-thumb/restaurant-table-8-817653.png" //URL de la imagen
           )}
           {this.renderSensorData(
-            "Mesa 2",
+            "Table 2",
             this.state.table,
-            "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
+            "https://cdn.iconscout.com/icon/premium/png-512-thumb/restaurant-table-8-817653.png" //URL de la imagen
           )}
           {this.renderSensorData(
-            "Mesa 3",
+            "Table 3",
             this.state.table,
-            "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
+            "https://cdn.iconscout.com/icon/premium/png-512-thumb/restaurant-table-8-817653.png" //URL de la imagen
           )}
           {this.renderSensorData(
-            "Mesa 4",
+            "Table 4",
             this.state.table,
-            "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
+            "https://cdn.iconscout.com/icon/premium/png-512-thumb/restaurant-table-8-817653.png" //URL de la imagen
           )}
           {this.renderSensorData(
-            "Mesa 5",
+            "Table 5",
             this.state.table,
-            "https://purepng.com/public/uploads/large/purepng.com-tabletabledeskboardcook-tablefurniture-1701527998855osb4d.png" //URL de la imagen
+            "https://cdn.iconscout.com/icon/premium/png-512-thumb/restaurant-table-8-817653.png" //URL de la imagen
           )}
         </View>
       </ScrollView>

@@ -1,9 +1,6 @@
 import React from "react";
 
 import {
-    StyleSheet,
-    View,
-    AppRegistry,
     Image,
     Animated,
     TouchableWithoutFeedback} from 'react-native';
@@ -14,7 +11,7 @@ export default class ListItem extends React.Component{
         animatePress: new Animated.Value(1)
     }
 
-    animateIn(){
+   animateIn(){
         Animated.timing(this.state.animatePress, {
             toValue: 0.8,
             duration: 200
@@ -48,10 +45,13 @@ export default class ListItem extends React.Component{
                         },
                     ]
                 }}>
-                    <Image style={{ flex: 1, alignContent:"center", alignItems:"center" }} source={image}></Image>
+                    <Image style={{ 
+                        flex: 1, 
+                        alignContent:"center", 
+                        alignItems:"center" 
+                    }} source={image}></Image>
                 </Animated.View>
             </TouchableWithoutFeedback>
-
         )
     }
 }

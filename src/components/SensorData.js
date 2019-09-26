@@ -10,7 +10,7 @@ const SensorData = props => (
     />
     <View style={styles.column}>
       <Text style={styles.textTitleStyle}>{props.name}</Text>
-      <Text style={styles.textStyle}>{props.value ? ("Estado: " + props.value) : "Sin conexión con el broker"}</Text>
+      <Text style={styles.textStyle}>{props.value ? ("State: " + props.value) : "No connection with broker"}</Text>
     </View>
   </View>
 );
